@@ -12,17 +12,40 @@ import UIKit
 
 class SettingCell: UICollectionViewCell {
     
+    override var isHighlighted: Bool {
+        didSet {
+            print(isHighlighted)
+            backgroundColor = isHighlighted ? .darkGray : .white
+            
+            nameLabel.textColor = isHighlighted ? .white : .black
+            
+            iconImageView.tintColor = isHighlighted ? .white : .darkGray
+        }
+    }
+    
+    
+    var setting: Setting? {
+        didSet{
+            guard let setting = setting else {
+                return
+            }
+            nameLabel.text = setting.name
+            iconImageView.image = UIImage(systemName: setting.imageName)
+        }
+    }
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "gearshape.fill")
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .gray
         return imageView
     }()
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Setting"
+        label.font = .systemFont(ofSize: 13)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

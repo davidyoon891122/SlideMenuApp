@@ -31,6 +31,18 @@ class SettingsLauncher: NSObject {
     }()
     
     private let cellId = "cellId"
+    private let cellHeight:CGFloat = 50.0
+    
+    private let settings: [Setting] = {
+        return [
+            Setting(name: "Settings", imageName: "gearshape.fill"),
+            Setting(name: "Terms & privacy policy", imageName: "gearshape.fill"),
+            Setting(name: "Send Feedback", imageName: "gearshape.fill"),
+            Setting(name: "Help", imageName: "gearshape.fill"),
+            Setting(name: "Switch Account", imageName: "gearshape.fill"),
+            Setting(name: "Cancel", imageName: "gearshape.fill")
+        ]
+    }()
     
     override init() {
         super.init()
@@ -51,9 +63,9 @@ class SettingsLauncher: NSObject {
             window.addSubview(blackView)
             window.addSubview(collectionView)
             
-            let height:CGFloat = 200
+            let height:CGFloat = CGFloat(settings.count) * cellHeight
             let y = window.frame.height - height
-            collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: 200)
+            collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
             blackView.frame = window.frame
             blackView.alpha = 0
             
@@ -89,12 +101,13 @@ class SettingsLauncher: NSObject {
 
 extension SettingsLauncher: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return settings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SettingCell
-        
+        let setting = settings[indexPath.row]
+        cell.setting = setting
         return cell
     }
     
@@ -105,7 +118,7 @@ extension SettingsLauncher: UICollectionViewDataSource {
 
 extension SettingsLauncher: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+        return CGSize(width: collectionView.frame.width, height: cellHeight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
