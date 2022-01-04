@@ -13,6 +13,7 @@
 		AD2A1C5E2783AC9200BA63DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2A1C5C2783AC9200BA63DC /* LaunchScreen.storyboard */; };
 		AD2A1C662783ACB400BA63DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C652783ACB400BA63DC /* MainViewController.swift */; };
 		AD2A1C682783B13800BA63DC /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */; };
+		AD2A1C6A278471BC00BA63DC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C69278471BC00BA63DC /* SettingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AD2A1C5F2783AC9200BA63DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD2A1C652783ACB400BA63DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
+		AD2A1C69278471BC00BA63DC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				AD2A1C5F2783AC9200BA63DC /* Info.plist */,
 				AD2A1C652783ACB400BA63DC /* MainViewController.swift */,
 				AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */,
+				AD2A1C69278471BC00BA63DC /* SettingCell.swift */,
 			);
 			path = SlideMenuApp;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 				AD2A1C682783B13800BA63DC /* SettingsLauncher.swift in Sources */,
 				AD2A1C662783ACB400BA63DC /* MainViewController.swift in Sources */,
 				AD2A1C522783AC9000BA63DC /* AppDelegate.swift in Sources */,
+				AD2A1C6A278471BC00BA63DC /* SettingCell.swift in Sources */,
 				AD2A1C542783AC9000BA63DC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

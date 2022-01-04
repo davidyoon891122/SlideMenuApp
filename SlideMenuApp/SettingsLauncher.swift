@@ -7,11 +7,19 @@
 
 import UIKit
 
-class SettingsLauncher: NSObject {
-    override init() {
-        super.init()
-    }
+class Setting: NSObject {
+    let name: String
+    let imageName: String
     
+    init(name: String, imageName: String) {
+        self.name = name
+        self.imageName = imageName
+    }
+}
+
+
+
+class SettingsLauncher: NSObject {
     let blackView = UIView()
     
     let collectionView: UICollectionView = {
@@ -21,6 +29,17 @@ class SettingsLauncher: NSObject {
         
         return collectionView
     }()
+    
+    private let cellId = "cellId"
+    
+    override init() {
+        super.init()
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.register(SettingCell.self, forCellWithReuseIdentifier: cellId)
+        
+    }
+    
     
     func showSettings() {
         if let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) {
@@ -51,8 +70,6 @@ class SettingsLauncher: NSObject {
     }
     
     @objc func tapBlackView() {
-        
-        
         UIView.animate(withDuration: 0.5, animations: {
             self.blackView.alpha = 0
             
@@ -66,4 +83,36 @@ class SettingsLauncher: NSObject {
             
         })
     }
+}
+
+
+
+extension SettingsLauncher: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SettingCell
+        
+        return cell
+    }
+    
+    
+    
+}
+
+
+extension SettingsLauncher: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+
+
+extension SettingsLauncher: UICollectionViewDelegate {
+    
 }
