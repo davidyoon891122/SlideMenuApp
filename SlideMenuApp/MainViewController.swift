@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .blue
         self.configureNavigation()
     }
     
@@ -21,28 +21,9 @@ class MainViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = rightSettingButton
     }
-    
-    let blackView = UIView()
+    let settingsLauncher = SettingsLauncher()
     @objc func tapSettingButton() {
-        if let window = UIApplication.shared.keyWindow {
-            print("setting button tapped")
-            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
-            
-            
-            window.addSubview(blackView)
-            blackView.frame = window.frame
-            blackView.alpha = 0
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                self.blackView.alpha = 1
-            })
-        }
+        settingsLauncher.showSettings()
     }
-    
-    @objc func tapBlackView() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.blackView.alpha = 0
-        })
-    }
+
 }
