@@ -11,9 +11,10 @@
 		AD2A1C542783AC9000BA63DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C532783AC9000BA63DC /* SceneDelegate.swift */; };
 		AD2A1C5B2783AC9200BA63DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD2A1C5A2783AC9200BA63DC /* Assets.xcassets */; };
 		AD2A1C5E2783AC9200BA63DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2A1C5C2783AC9200BA63DC /* LaunchScreen.storyboard */; };
-		AD2A1C662783ACB400BA63DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C652783ACB400BA63DC /* MainViewController.swift */; };
+		AD2A1C662783ACB400BA63DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C652783ACB400BA63DC /* HomeViewController.swift */; };
 		AD2A1C682783B13800BA63DC /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */; };
 		AD2A1C6A278471BC00BA63DC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C69278471BC00BA63DC /* SettingCell.swift */; };
+		AD2A1C6C2784811900BA63DC /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C6B2784811900BA63DC /* VideoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +24,10 @@
 		AD2A1C5A2783AC9200BA63DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD2A1C5D2783AC9200BA63DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD2A1C5F2783AC9200BA63DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD2A1C652783ACB400BA63DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AD2A1C652783ACB400BA63DC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		AD2A1C69278471BC00BA63DC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		AD2A1C6B2784811900BA63DC /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +65,10 @@
 				AD2A1C5A2783AC9200BA63DC /* Assets.xcassets */,
 				AD2A1C5C2783AC9200BA63DC /* LaunchScreen.storyboard */,
 				AD2A1C5F2783AC9200BA63DC /* Info.plist */,
-				AD2A1C652783ACB400BA63DC /* MainViewController.swift */,
+				AD2A1C652783ACB400BA63DC /* HomeViewController.swift */,
 				AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */,
 				AD2A1C69278471BC00BA63DC /* SettingCell.swift */,
+				AD2A1C6B2784811900BA63DC /* VideoCell.swift */,
 			);
 			path = SlideMenuApp;
 			sourceTree = "<group>";
@@ -140,10 +143,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD2A1C682783B13800BA63DC /* SettingsLauncher.swift in Sources */,
-				AD2A1C662783ACB400BA63DC /* MainViewController.swift in Sources */,
+				AD2A1C662783ACB400BA63DC /* HomeViewController.swift in Sources */,
 				AD2A1C522783AC9000BA63DC /* AppDelegate.swift in Sources */,
 				AD2A1C6A278471BC00BA63DC /* SettingCell.swift in Sources */,
 				AD2A1C542783AC9000BA63DC /* SceneDelegate.swift in Sources */,
+				AD2A1C6C2784811900BA63DC /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

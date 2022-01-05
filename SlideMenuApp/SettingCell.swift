@@ -38,7 +38,7 @@ class SettingCell: UICollectionViewCell {
         imageView.image = UIImage(systemName: "gearshape.fill")
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .gray
+        imageView.tintColor = .darkGray
         return imageView
     }()
     
