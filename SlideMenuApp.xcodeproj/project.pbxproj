@@ -60,17 +60,33 @@
 		AD2A1C502783AC9000BA63DC /* SlideMenuApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD2A1C7127870AAE00BA63DC /* ViewController */,
 				AD2A1C512783AC9000BA63DC /* AppDelegate.swift */,
 				AD2A1C532783AC9000BA63DC /* SceneDelegate.swift */,
 				AD2A1C5A2783AC9200BA63DC /* Assets.xcassets */,
 				AD2A1C5C2783AC9200BA63DC /* LaunchScreen.storyboard */,
 				AD2A1C5F2783AC9200BA63DC /* Info.plist */,
+			);
+			path = SlideMenuApp;
+			sourceTree = "<group>";
+		};
+		AD2A1C7127870AAE00BA63DC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AD2A1C7227870AC200BA63DC /* Subviews */,
 				AD2A1C652783ACB400BA63DC /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AD2A1C7227870AC200BA63DC /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
 				AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */,
 				AD2A1C69278471BC00BA63DC /* SettingCell.swift */,
 				AD2A1C6B2784811900BA63DC /* VideoCell.swift */,
 			);
-			path = SlideMenuApp;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

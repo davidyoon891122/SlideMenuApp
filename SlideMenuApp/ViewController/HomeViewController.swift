@@ -19,11 +19,21 @@ class HomeViewController: UICollectionViewController {
     }
     
     func configureNavigation() {
-        self.navigationItem.title = "Home"
-        
+
         let rightSettingButton = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(tapSettingButton))
         
         self.navigationItem.rightBarButtonItem = rightSettingButton
+        self.navigationItem.rightBarButtonItem?.tintColor = .label
+        
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        
+        textView.text = "Home"
+        textView.textColor = .label
+        textView.font = .systemFont(ofSize: 20)
+        textView.textContainerInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        textView.isEditable = false
+        navigationItem.titleView = textView
+        
     }
     let settingsLauncher = SettingsLauncher()
     @objc func tapSettingButton() {
@@ -46,6 +56,7 @@ extension HomeViewController {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        let height = (view.frame.width - 32) * 9 / 16
+        return CGSize(width: view.frame.width, height: height + 16 + 60)
     }
 }

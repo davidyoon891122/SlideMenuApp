@@ -11,8 +11,10 @@ class VideoCell: UICollectionViewCell {
     
     private lazy var thumnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "paul_kim")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -25,22 +27,27 @@ class VideoCell: UICollectionViewCell {
     
     private lazy var userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .green
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 22
+        imageView.layer.masksToBounds = true
+        imageView.image = UIImage(named: "singer")
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .purple
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "폴킴 - 있잖아"
         return label
     }()
     
     private lazy var subtitleTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = .red
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.text = "폴킴 있잖아 뮤직비디오 - 1,523,325 views - 3 years"
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+        textView.textColor = .lightGray
+        textView.isEditable = false
         return textView
     }()
     
@@ -84,7 +91,7 @@ private extension VideoCell {
         
         self.subtitleTextView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 4).isActive = true
         self.subtitleTextView.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor).isActive = true
-        self.subtitleTextView.bottomAnchor.constraint(equalTo: self.userProfileImageView.bottomAnchor).isActive = true
+        self.subtitleTextView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         self.subtitleTextView.trailingAnchor.constraint(equalTo: self.thumnailImageView.trailingAnchor).isActive = true
         
         
