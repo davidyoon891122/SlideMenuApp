@@ -15,6 +15,8 @@
 		AD2A1C682783B13800BA63DC /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */; };
 		AD2A1C6A278471BC00BA63DC /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C69278471BC00BA63DC /* SettingCell.swift */; };
 		AD2A1C6C2784811900BA63DC /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C6B2784811900BA63DC /* VideoCell.swift */; };
+		AD2A1C742787101B00BA63DC /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C732787101B00BA63DC /* MenuBar.swift */; };
+		AD2A1C76278715A400BA63DC /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C75278715A400BA63DC /* MenuBarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		AD2A1C69278471BC00BA63DC /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		AD2A1C6B2784811900BA63DC /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		AD2A1C732787101B00BA63DC /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		AD2A1C75278715A400BA63DC /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */,
 				AD2A1C69278471BC00BA63DC /* SettingCell.swift */,
 				AD2A1C6B2784811900BA63DC /* VideoCell.swift */,
+				AD2A1C732787101B00BA63DC /* MenuBar.swift */,
+				AD2A1C75278715A400BA63DC /* MenuBarCell.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -163,6 +169,8 @@
 				AD2A1C522783AC9000BA63DC /* AppDelegate.swift in Sources */,
 				AD2A1C6A278471BC00BA63DC /* SettingCell.swift in Sources */,
 				AD2A1C542783AC9000BA63DC /* SceneDelegate.swift in Sources */,
+				AD2A1C742787101B00BA63DC /* MenuBar.swift in Sources */,
+				AD2A1C76278715A400BA63DC /* MenuBarCell.swift in Sources */,
 				AD2A1C6C2784811900BA63DC /* VideoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

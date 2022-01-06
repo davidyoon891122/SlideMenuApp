@@ -7,7 +7,29 @@
 
 import UIKit
 
-class VideoCell: UICollectionViewCell {
+class BaseCell: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubviews()
+        self.setLayoutConstraint()
+    }
+    
+    func addSubviews() {
+        
+    }
+    
+    func setLayoutConstraint() {
+        
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+class VideoCell: BaseCell {
     
     private lazy var thumnailImageView: UIImageView = {
         let imageView = UIImageView()
@@ -51,21 +73,7 @@ class VideoCell: UICollectionViewCell {
         return textView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.addSubviews()
-        self.setLayoutConstraint()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-
-private extension VideoCell {
-    func addSubviews() {
+    override func addSubviews() {
         self.addSubview(thumnailImageView)
         self.addSubview(userProfileImageView)
         self.addSubview(titleLabel)
@@ -73,7 +81,7 @@ private extension VideoCell {
         self.addSubview(separatorView)
     }
     
-    func setLayoutConstraint() {
+    override func setLayoutConstraint() {
         self.thumnailImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         self.thumnailImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         self.thumnailImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
@@ -103,3 +111,7 @@ private extension VideoCell {
         
     }
 }
+
+
+
+
