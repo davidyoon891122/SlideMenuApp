@@ -17,6 +17,7 @@
 		AD2A1C6C2784811900BA63DC /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C6B2784811900BA63DC /* VideoCell.swift */; };
 		AD2A1C742787101B00BA63DC /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C732787101B00BA63DC /* MenuBar.swift */; };
 		AD2A1C76278715A400BA63DC /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C75278715A400BA63DC /* MenuBarCell.swift */; };
+		AD2A1C7927871ECA00BA63DC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C7827871ECA00BA63DC /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AD2A1C6B2784811900BA63DC /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		AD2A1C732787101B00BA63DC /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		AD2A1C75278715A400BA63DC /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
+		AD2A1C7827871ECA00BA63DC /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		AD2A1C502783AC9000BA63DC /* SlideMenuApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD2A1C7727871EBF00BA63DC /* Model */,
 				AD2A1C7127870AAE00BA63DC /* ViewController */,
 				AD2A1C512783AC9000BA63DC /* AppDelegate.swift */,
 				AD2A1C532783AC9000BA63DC /* SceneDelegate.swift */,
@@ -93,6 +96,14 @@
 				AD2A1C75278715A400BA63DC /* MenuBarCell.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		AD2A1C7727871EBF00BA63DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD2A1C7827871ECA00BA63DC /* Video.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				AD2A1C662783ACB400BA63DC /* HomeViewController.swift in Sources */,
 				AD2A1C522783AC9000BA63DC /* AppDelegate.swift in Sources */,
 				AD2A1C6A278471BC00BA63DC /* SettingCell.swift in Sources */,
+				AD2A1C7927871ECA00BA63DC /* Video.swift in Sources */,
 				AD2A1C542783AC9000BA63DC /* SceneDelegate.swift in Sources */,
 				AD2A1C742787101B00BA63DC /* MenuBar.swift in Sources */,
 				AD2A1C76278715A400BA63DC /* MenuBarCell.swift in Sources */,

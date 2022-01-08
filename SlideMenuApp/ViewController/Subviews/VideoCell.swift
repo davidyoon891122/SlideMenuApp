@@ -8,6 +8,8 @@
 import UIKit
 
 class BaseCell: UICollectionViewCell {
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubviews()
@@ -30,7 +32,6 @@ class BaseCell: UICollectionViewCell {
 
 
 class VideoCell: BaseCell {
-    
     private lazy var thumnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +59,9 @@ class VideoCell: BaseCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         label.text = "폴킴 - 있잖아"
         return label
     }()
@@ -70,8 +73,47 @@ class VideoCell: BaseCell {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.textColor = .lightGray
         textView.isEditable = false
+        textView.backgroundColor = .clear
         return textView
     }()
+    
+    var titleLabelHeightConstraint: NSLayoutConstraint?
+    
+    func setVideo(video: Video) {
+        guard let image = video.thumnailImageName,
+              let singerImage = video.channel?.profileImageName,
+              let channelName = video.channel?.name,
+              let numberOfViews = video.numberOfViews,
+              let title = video.title
+        else {
+            return
+        }
+        thumnailImageView.image = UIImage(named: image)
+        titleLabel.text = title
+        userProfileImageView.image = UIImage(named: singerImage)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let commaNumberOfView = numberFormatter.string(from: numberOfViews) else {
+            return
+        }
+        
+        let subtitleText = "\(channelName) • \(commaNumberOfView) • 2 years ago "
+        subtitleTextView.text = subtitleText
+        
+        //measure title text
+        let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
+        let option = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let estimatedRect = NSString(string: title)
+            .boundingRect(with: size, options: option, attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 14)], context: nil)
+        
+        if estimatedRect.size.height > 20 {
+            titleLabelHeightConstraint?.constant = 44
+        } else {
+            titleLabelHeightConstraint?.constant = 20
+        }
+        
+    }
     
     override func addSubviews() {
         self.addSubview(thumnailImageView)
@@ -90,12 +132,13 @@ class VideoCell: BaseCell {
         self.userProfileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         self.userProfileImageView.widthAnchor.constraint(equalToConstant: 44).isActive = true
         self.userProfileImageView.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        self.userProfileImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+        self.userProfileImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -35).isActive = true
         
         self.titleLabel.topAnchor.constraint(equalTo: self.thumnailImageView.bottomAnchor, constant: 8).isActive = true
         self.titleLabel.leadingAnchor.constraint(equalTo: self.userProfileImageView.trailingAnchor, constant: 8).isActive = true
         self.titleLabel.trailingAnchor.constraint(equalTo: self.thumnailImageView.trailingAnchor).isActive = true
-        self.titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        titleLabelHeightConstraint = self.titleLabel.heightAnchor.constraint(equalToConstant: 44)
+        titleLabelHeightConstraint?.isActive = true
         
         self.subtitleTextView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 4).isActive = true
         self.subtitleTextView.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor).isActive = true
