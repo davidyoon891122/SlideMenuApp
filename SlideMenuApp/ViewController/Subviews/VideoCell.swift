@@ -53,6 +53,7 @@ class VideoCell: BaseCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "singer")
         return imageView
     }()
@@ -80,21 +81,22 @@ class VideoCell: BaseCell {
     var titleLabelHeightConstraint: NSLayoutConstraint?
     
     func setVideo(video: Video) {
-        guard let image = video.thumnailImageName,
-              let singerImage = video.channel?.profileImageName,
+        guard let imageURL = video.thumnailImageName,
+              let profileURL = video.channel?.profileImageName,
               let channelName = video.channel?.name,
               let numberOfViews = video.numberOfViews,
               let title = video.title
         else {
             return
         }
-        thumnailImageView.image = UIImage(named: image)
+        self.thumnailImageView.loadImageUsingUrlString(urlString: imageURL)
+        self.userProfileImageView.loadImageUsingUrlString(urlString: profileURL)
         titleLabel.text = title
-        userProfileImageView.image = UIImage(named: singerImage)
+        
         
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        guard let commaNumberOfView = numberFormatter.string(from: numberOfViews) else {
+        guard let commaNumberOfView = numberFormatter.string(from: NSNumber(value: numberOfViews)) else {
             return
         }
         
@@ -157,4 +159,21 @@ class VideoCell: BaseCell {
 
 
 
-
+extension UIImageView {
+    func loadImageUsingUrlString(urlString: String) {
+        URLSession.shared.dataTask(with: URL(string: urlString)!) { [weak self] data, _, error in
+            guard let data = data,
+                  let self = self,
+                  error == nil
+                  else {
+                print(String(describing: error))
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data)
+            }
+            
+        }.resume()
+    }
+}
