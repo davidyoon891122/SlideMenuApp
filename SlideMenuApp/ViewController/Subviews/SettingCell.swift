@@ -14,11 +14,8 @@ class SettingCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet {
-            print(isHighlighted)
             backgroundColor = isHighlighted ? .darkGray : .white
-            
             nameLabel.textColor = isHighlighted ? .white : .black
-            
             iconImageView.tintColor = isHighlighted ? .white : .darkGray
         }
     }
@@ -29,7 +26,7 @@ class SettingCell: UICollectionViewCell {
             guard let setting = setting else {
                 return
             }
-            nameLabel.text = setting.name
+            nameLabel.text = setting.name.rawValue
             iconImageView.image = UIImage(systemName: setting.imageName)
         }
     }
@@ -46,6 +43,7 @@ class SettingCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Setting"
         label.font = .systemFont(ofSize: 13)
+        //label.textAlignment = .center
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -74,6 +72,6 @@ class SettingCell: UICollectionViewCell {
         self.nameLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.nameLabel.leadingAnchor.constraint(equalTo: self.iconImageView.trailingAnchor, constant: 8).isActive = true
         self.nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
+        self.nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true 
     }
 }

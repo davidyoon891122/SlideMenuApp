@@ -10,7 +10,11 @@ import UIKit
 class HomeViewController: UICollectionViewController {
     private var videos: [Video]?
     private let cellId = "cellId"
-    private let settingsLauncher = SettingsLauncher()
+    private lazy var settingsLauncher: SettingsLauncher = {
+        let launcher = SettingsLauncher()
+        launcher.homeController = self
+        return launcher
+    }()
     
     
     private lazy var menuBar:MenuBar = {
@@ -29,7 +33,11 @@ class HomeViewController: UICollectionViewController {
         
     }
     
-    
+    func showControllerForSettings(setting: Setting) {
+        let dummySettingsViewController = UIViewController()
+        dummySettingsViewController.navigationItem.title = setting.name.rawValue
+        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+    }
 
 }
 
@@ -136,5 +144,4 @@ private extension HomeViewController {
             }
         }.resume()
     }
-    
 }

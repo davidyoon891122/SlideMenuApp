@@ -8,15 +8,24 @@
 import UIKit
 
 class Setting: NSObject {
-    let name: String
+    let name: SettingName
     let imageName: String
     
-    init(name: String, imageName: String) {
+    init(name: SettingName, imageName: String) {
         self.name = name
         self.imageName = imageName
     }
 }
 
+
+enum SettingName: String {
+    case Cancel = "Cancel"
+    case Policy = "Terms & privacy policy"
+    case FeedBack = "Send Feedback"
+    case Help = "Help"
+    case SwitchAccount = "Switch Account"
+    case Settings
+}
 
 
 class SettingsLauncher: NSObject {
@@ -32,15 +41,16 @@ class SettingsLauncher: NSObject {
     
     private let cellId = "cellId"
     private let cellHeight:CGFloat = 50.0
+    weak var homeController: HomeViewController?
     
     private let settings: [Setting] = {
         return [
-            Setting(name: "Settings", imageName: "gearshape.fill"),
-            Setting(name: "Terms & privacy policy", imageName: "gearshape.fill"),
-            Setting(name: "Send Feedback", imageName: "gearshape.fill"),
-            Setting(name: "Help", imageName: "gearshape.fill"),
-            Setting(name: "Switch Account", imageName: "gearshape.fill"),
-            Setting(name: "Cancel", imageName: "gearshape.fill")
+            Setting(name: SettingName.Settings, imageName: "gearshape.fill"),
+            Setting(name: SettingName.Policy, imageName: "gearshape.fill"),
+            Setting(name: SettingName.FeedBack, imageName: "gearshape.fill"),
+            Setting(name: SettingName.Help, imageName: "gearshape.fill"),
+            Setting(name: SettingName.SwitchAccount, imageName: "gearshape.fill"),
+            Setting(name: SettingName.Cancel, imageName: "gearshape.fill")
         ]
     }()
     
@@ -52,12 +62,11 @@ class SettingsLauncher: NSObject {
         
     }
     
-    
     func showSettings() {
         if let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) {
             print("setting button tapped")
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView)))
+            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView(setting:))))
             
             
             window.addSubview(blackView)
@@ -81,23 +90,7 @@ class SettingsLauncher: NSObject {
         }
     }
     
-    @objc func tapBlackView() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.blackView.alpha = 0
-            
-            if let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}){
-                self.collectionView.frame = CGRect(
-                    x: 0,
-                    y: window.frame.height,
-                    width: self.collectionView.frame.width,
-                    height: self.collectionView.frame.height)
-            }
-            
-        })
-    }
 }
-
-
 
 extension SettingsLauncher: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -110,11 +103,8 @@ extension SettingsLauncher: UICollectionViewDataSource {
         cell.setting = setting
         return cell
     }
-    
-    
-    
-}
 
+}
 
 extension SettingsLauncher: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -123,9 +113,43 @@ extension SettingsLauncher: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let setting = self.settings[indexPath.item]
+        tapBlackView(setting: setting)
+        
+    }
 }
 
 
 extension SettingsLauncher: UICollectionViewDelegate {
     
+}
+
+
+private extension SettingsLauncher {
+    
+    
+    @objc func tapBlackView(setting: Setting) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
+            
+            self.blackView.alpha = 0
+            
+            if let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}){
+                self.collectionView.frame = CGRect(
+                    x: 0,
+                    y: window.frame.height,
+                    width: self.collectionView.frame.width,
+                    height: self.collectionView.frame.height)
+            }
+        } completion: { [weak self] done in
+            guard let self = self else { return }
+            print(setting)
+            if setting.name != .Cancel {
+                self.homeController?.showControllerForSettings(setting: setting)
+            }
+                
+            
+        }
+    }
 }

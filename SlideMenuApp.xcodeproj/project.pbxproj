@@ -82,6 +82,7 @@
 			children = (
 				AD2A1C7227870AC200BA63DC /* Subviews */,
 				AD2A1C652783ACB400BA63DC /* HomeViewController.swift */,
+				AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -89,7 +90,6 @@
 		AD2A1C7227870AC200BA63DC /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				AD2A1C672783B13800BA63DC /* SettingsLauncher.swift */,
 				AD2A1C69278471BC00BA63DC /* SettingCell.swift */,
 				AD2A1C6B2784811900BA63DC /* VideoCell.swift */,
 				AD2A1C732787101B00BA63DC /* MenuBar.swift */,
