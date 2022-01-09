@@ -39,7 +39,7 @@ class MenuBarCell: BaseCell {
         imageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 28).isActive = true
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 10).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
 }
 
