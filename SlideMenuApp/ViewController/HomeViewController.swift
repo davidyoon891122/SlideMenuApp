@@ -97,7 +97,6 @@ private extension HomeViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
-        
     }
    
     @objc func tapSettingButton() {
@@ -113,11 +112,21 @@ private extension HomeViewController {
     
     func configureMenuBar() {
         view.addSubview(menuBar)
-        
-        menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        navigationController?.hidesBarsOnSwipe = true
+        menuBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         menuBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let menuBarBackView = UIView()
+        menuBarBackView.backgroundColor = .systemBackground
+        view.addSubview(menuBarBackView)
+        menuBarBackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        menuBarBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        menuBarBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        menuBarBackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        
     }
     
     func fetchVideos() {
