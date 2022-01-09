@@ -35,7 +35,7 @@ class VideoCell: BaseCell {
     private lazy var thumnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "paul_kim")
+        imageView.image = nil
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -54,7 +54,7 @@ class VideoCell: BaseCell {
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "singer")
+        imageView.image = nil
         return imageView
     }()
     
@@ -157,10 +157,16 @@ class VideoCell: BaseCell {
     }
 }
 
-
+let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
     func loadImageUsingUrlString(urlString: String) {
+        
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
+            self.image = imageFromCache
+            return
+        }
+        
         URLSession.shared.dataTask(with: URL(string: urlString)!) { [weak self] data, _, error in
             guard let data = data,
                   let self = self,
@@ -171,7 +177,9 @@ extension UIImageView {
             }
             
             DispatchQueue.main.async {
-                self.image = UIImage(data: data)
+                let imageToCache = UIImage(data: data)
+                imageCache.setObject(imageToCache!, forKey: urlString as NSString)
+                self.image = imageToCache
             }
             
         }.resume()
