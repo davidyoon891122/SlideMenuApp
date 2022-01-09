@@ -63,7 +63,6 @@ extension MenuBar: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         let x = CGFloat(indexPath.item) * frame.width / 4
         horizontalBarLeftAnchorConstraint?.constant = x
         

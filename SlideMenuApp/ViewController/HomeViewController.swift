@@ -58,6 +58,13 @@ extension HomeViewController {
         cell.setVideo(video: video)
         return cell
     }
+    
+    func fetchVideos() {
+        ApiService.shardInstance.fetchVideos { videos in
+            self.videos = videos
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 
@@ -118,39 +125,17 @@ private extension HomeViewController {
         menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         menuBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        let menuBarBackView = UIView()
-        menuBarBackView.backgroundColor = .systemBackground
-        view.addSubview(menuBarBackView)
-        menuBarBackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        menuBarBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        menuBarBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        menuBarBackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        let menuBarBackView = UIView()
+//        menuBarBackView.backgroundColor = .systemBackground
+//        view.addSubview(menuBarBackView)
+//        menuBarBackView.translatesAutoresizingMaskIntoConstraints = false
+//        menuBarBackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        menuBarBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        menuBarBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        menuBarBackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         
     }
     
-    func fetchVideos() {
-        let url = URL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
-        URLSession.shared.dataTask(with: url!) { data, response, error in
-            if error != nil {
-                print(error ?? "Error")
-                return
-            }
-            
-            guard let data = data else {
-                return
-            }
-            do {
-                let jsonData = try JSONDecoder().decode([Video].self, from: data)
-                self.videos = jsonData
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
-            } catch let jsonError {
-                print(jsonError)
-            }
-        }.resume()
-    }
+    
 }
