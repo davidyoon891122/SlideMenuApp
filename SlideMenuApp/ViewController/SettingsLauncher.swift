@@ -64,7 +64,6 @@ class SettingsLauncher: NSObject {
     
     func showSettings() {
         if let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) {
-            print("setting button tapped")
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBlackView(setting:))))
             
@@ -144,7 +143,6 @@ private extension SettingsLauncher {
             }
         } completion: { [weak self] done in
             guard let self = self else { return }
-            print(setting)
             if setting.name != .Cancel {
                 self.homeController?.showControllerForSettings(setting: setting)
             }
